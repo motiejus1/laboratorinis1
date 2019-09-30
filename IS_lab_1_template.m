@@ -223,3 +223,5 @@ while e ~= 0 % executes while the total error is not 0
 	% calculate the total error for these 5 inputs 
 	e = abs(e1) + abs(e2) + abs(e3) + abs(e4) + abs(e5);
 end
+
+%po apmokymo patikrinti reiksmes 
