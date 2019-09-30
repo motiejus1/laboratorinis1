@@ -64,13 +64,13 @@ metric_P4=apvalumas_roundness(P4); %roundness
 %selecting features(color, roundness, 3 apples and 2 pears)
 %A1,A2,A3,P1,P2
 %building matrix 2x5
-x1=[hsv_value_A1 hsv_value_A2 hsv_value_A3 hsv_value_P1 hsv_value_P2];
-x2=[metric_A1 metric_A2 metric_A3 metric_P1 metric_P2];
+x1=[hsv_value_P3 hsv_value_P4 hsv_value_A4 hsv_value_A5 hsv_value_A6];
+x2=[metric_P3 metric_P4 metric_A4 metric_A5 metric_A6];
 % estimated features are stored in matrix P:
 P=[x1;x2];
 
 %Desired output vector
-T=[1;1;1;-1;-1];
+T=[-1;-1;1;1;1];
 
 %% train single perceptron with two inputs and one output
 
@@ -147,7 +147,7 @@ while e ~= 0 % executes while the total error is not 0
 % 
 %   calculate error for current example
 % 
-    n= 0.05;
+    n= 0.01;
 %   update parameters using current inputs ant current error
  	w1 = w1 + n* e1*x1(1); 
     w2 = w2 + n * e1*x2(1);
@@ -218,7 +218,6 @@ while e ~= 0 % executes while the total error is not 0
     else
         y5 = -1;
     end
-    % calculate the error
     e5 = T(5) - y5;
    
 	% calculate the total error for these 5 inputs 
