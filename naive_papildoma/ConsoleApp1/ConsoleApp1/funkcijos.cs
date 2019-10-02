@@ -26,7 +26,7 @@ namespace ConsoleApp1
             return sum / length;
         }
         //Gauso pasiskirstymo skaiciavimas
-        public static double NormalDist(double x, double mean, double standard_dev)
+        public static double GausoSkirstinys(double x, double mean, double standard_dev)
         {
             double fact = standard_dev * Math.Sqrt(2.0 * Math.PI);
             double expo = (x - mean) * (x - mean) / (2.0 * standard_dev * standard_dev);

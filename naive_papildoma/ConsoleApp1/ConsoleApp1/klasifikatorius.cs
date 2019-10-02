@@ -77,7 +77,7 @@ namespace ConsoleApp1
                 {
                     double mean = Convert.ToDouble(dataSet.Tables["Gaussian"].Rows[i][a]);
                     double variance = Convert.ToDouble(dataSet.Tables["Gaussian"].Rows[i][++a]);
-                    double result = Funkcijos.NormalDist(obj[b - 1], mean, Funkcijos.SquareRoot(variance));
+                    double result = Funkcijos.GausoSkirstinys(obj[b - 1], mean, Funkcijos.SquareRoot(variance));
                     subScoreList.Add(result);
                     a++; b++;
                 }
