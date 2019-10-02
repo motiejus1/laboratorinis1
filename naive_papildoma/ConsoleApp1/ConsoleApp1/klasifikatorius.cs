@@ -52,7 +52,7 @@ namespace ConsoleApp1
                 for (int i = 1; i < table.Columns.Count; i++)
                 {
                     row[a] = Funkcijos.Mean(SelectRows(table, i, string.Format("{0} = '{1}'", table.Columns[0].ColumnName, results[j].Name)));
-                    row[++a] = Funkcijos.Variance(SelectRows(table, i, string.Format("{0} = '{1}'", table.Columns[0].ColumnName, results[j].Name)));
+                    row[++a] = Funkcijos.Pasklidimas(SelectRows(table, i, string.Format("{0} = '{1}'", table.Columns[0].ColumnName, results[j].Name)));
                     a++;
                 }
             }
