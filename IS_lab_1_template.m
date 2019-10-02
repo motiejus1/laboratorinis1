@@ -1,4 +1,4 @@
-%Classification using perceptron
+%Klasifikacija naudojant perseptrona
 
 %Reading apple images
 A1=imread('apple_04.jpg');
