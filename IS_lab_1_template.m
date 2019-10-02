@@ -63,7 +63,7 @@ metric_P4=apvalumas_roundness(P4); %roundness
 
 %selecting features(color, roundness, 3 apples and 2 pears)
 %A1,A2,A3,P1,P2
-%building matrix 2x5
+%apvalumo ir spalvu matricos
 x1=[hsv_value_P3 hsv_value_P4 hsv_value_A4 hsv_value_A5 hsv_value_A6];
 x2=[metric_P3 metric_P4 metric_A4 metric_A5 metric_A6];
 % estimated features are stored in matrix P:
@@ -72,14 +72,14 @@ P=[x1;x2];
 %Desired output vector
 T=[-1;-1;1;1;1];
 
-%% train single perceptron with two inputs and one output
+%% perseptrono treniravimas
 
-% generate random initial values of w1, w2 and b
+% susigeneruojam w1,w2 ir b vertes
 w1 = randn(1);
 w2 = randn(1);
 b = randn(1);
 
-% calculate wieghted sum with randomly generated parameters
+% Skaiciuojame v1
 %v1 = <...>; % write your code here
 v1 = x1(1)*w1 + x2(1)*w2 + b;  
 % calculate current output of the perceptron 
@@ -88,67 +88,53 @@ if v1 > 0
 else
 	y1 = -1;
 end
-% calculate the error
+% Skaiciuojame e1 pira klaida
 e1 = T(1) - y1;
 
-% repeat the same for the rest 4 inputs x1 and x2
-% calculate wieghted sum with randomly generated parameters
-% v2 = <...> ; % write your code here
+% Veiksmai kartojami 5 kartus
 v2 =  x1(2)*w1 + x2(2)*w2 + b; 
-% calculate current output of the perceptron 
 if v2 > 0
 	y2 = 1;
 else
 	y2 = -1;
 end
-% calculate the error
 e2 = T(2) - y2;
 
 v3 =  x1(3)*w1 + x2(3)*w2 + b; 
-% calculate current output of the perceptron 
 if v3 > 0
 	y3 = 1;
 else
 	y3 = -1;
 end
-% calculate the error
 e3 = T(3) - y3;
 
 v4 =  x1(4)*w1 + x2(4)*w2 + b; 
-% calculate current output of the perceptron 
 if v4 > 0
 	y4 = 1;
 else
 	y4 = -1;
 end
-% calculate the error
 e4 = T(4) - y4;
 
 v5 =  x1(5)*w1 + x2(5)*w2 + b; 
-% calculate current output of the perceptron 
 if v5 > 0
 	y5 = 1;
 else
 	y5 = -1;
 end
-% calculate the error
 e5 = T(5) - y5;
 
-% <...> write the code for another 3 inputs
 
-% calculate the total error for these 5 inputs 
+
+% Skaiciuojame bendra klaida
 e = abs(e1) + abs(e2) + abs(e3) + abs(e4) + abs(e5);
 
 
 % write training algorithm
-while e ~= 0 % executes while the total error is not 0
-	% here should be your code of parameter update
-%   calculate output for current example
-% 
-%   calculate error for current example
-% 
-    n= 0.01;
-%   update parameters using current inputs ant current error
+while e ~= 0 % kol klaida nelygu 0, vyksta perceptrono apmokymas
+
+    n= 0.01; % pasirenkama n verte
+%   atnaujinami w1,w2 ir b parametrai pagal gautas klaidas
  	w1 = w1 + n* e1*x1(1); 
     w2 = w2 + n * e1*x2(1);
     b = b + n*e1;
@@ -170,49 +156,40 @@ while e ~= 0 % executes while the total error is not 0
     w2 = w2 + n * e5*x2(5);
     b = b + n*e5;
     
-    
+    %perksiaciuojame v1,v2,v3,v4,v5
     v1 = x1(1)*w1 + x2(1)*w2 + b;  
-% calculate current output of the perceptron 
     if v1 > 0
 	y1 = 1;
     else
 	y1 = -1;
     end
-% calculate the error
     e1 = T(1) - y1;
     
     v2 =  x1(2)*w1 + x2(2)*w2 + b; 
-% calculate current output of the perceptron 
     if v2 > 0
         y2 = 1;
     else
         y2 = -1;
     end
-    % calculate the error
     e2 = T(2) - y2;
 
     v3 =  x1(3)*w1 + x2(3)*w2 + b; 
-    % calculate current output of the perceptron 
     if v3 > 0
         y3 = 1;
     else
         y3 = -1;
     end
-    % calculate the error
     e3 = T(3) - y3;
 
     v4 =  x1(4)*w1 + x2(4)*w2 + b; 
-    % calculate current output of the perceptron 
     if v4 > 0
         y4 = 1;
     else
         y4 = -1;
     end
-    % calculate the error
     e4 = T(4) - y4;
 
     v5 =  x1(5)*w1 + x2(5)*w2 + b; 
-    % calculate current output of the perceptron 
     if v5 > 0
         y5 = 1;
     else
@@ -220,7 +197,7 @@ while e ~= 0 % executes while the total error is not 0
     end
     e5 = T(5) - y5;
    
-	% calculate the total error for these 5 inputs 
+	% Perskaiciuojame e
 	e = abs(e1) + abs(e2) + abs(e3) + abs(e4) + abs(e5);
 end
 
