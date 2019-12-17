@@ -201,4 +201,78 @@ while e ~= 0 % kol klaida nelygu 0, vyksta perceptrono apmokymas
 	e = abs(e1) + abs(e2) + abs(e3) + abs(e4) + abs(e5);
 end
 
-%po apmokymo patikrinti reiksmes 
+e;
+y1;
+T(1);
+y2;
+T(2);
+y3;
+T(3);
+y4;
+T(4);
+y5;
+T(5);
+
+%sumaisome obuolius su kriausem
+x1=[hsv_value_A6 hsv_value_P3 hsv_value_P4 hsv_value_A4 hsv_value_A5];
+x2=[hsv_value_A6 metric_P3 metric_P4 metric_A4 metric_A5];
+
+%tikros reiksmes
+T=[1 -1 -1 1 1];
+
+% Skaiciuojame v1
+%v1 = <...>; % write your code here
+v1 = x1(1)*w1 + x2(1)*w2 + b;  
+% calculate current output of the perceptron 
+if v1 > 0
+	y1 = 1;
+else
+	y1 = -1;
+end
+% Skaiciuojame e1 pira klaida
+e1 = T(1) - y1;
+
+v2 =  x1(2)*w1 + x2(2)*w2 + b; 
+if v2 > 0
+	y2 = 1;
+else
+	y2 = -1;
+end
+e2 = T(2) - y2;
+
+v3 =  x1(3)*w1 + x2(3)*w2 + b; 
+if v3 > 0
+	y3 = 1;
+else
+	y3 = -1;
+end
+e3 = T(3) - y3;
+
+v4 =  x1(4)*w1 + x2(4)*w2 + b; 
+if v4 > 0
+	y4 = 1;
+else
+	y4 = -1;
+end
+e4 = T(4) - y4;
+
+v5 =  x1(5)*w1 + x2(5)*w2 + b; 
+if v5 > 0
+	y5 = 1;
+else
+	y5 = -1;
+end
+e5 = T(5) - y5;
+
+
+
+% Skaiciuojame bendra klaida
+e = abs(e1) + abs(e2) + abs(e3) + abs(e4) + abs(e5);
+
+%isvedame atsakymus ir klaida
+ats1 = [y1 T(1)]
+ats2 = [y2 T(2)]
+ats3 = [y3 T(3)]
+ats4 = [y4 T(4)]
+ats5 = [y1 T(5)]
+e
